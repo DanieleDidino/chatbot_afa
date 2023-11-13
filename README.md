@@ -9,8 +9,8 @@ Chat with the documents from the <i>Agentur für Arbeit</i>
 
 Thank you for your interest in my Chatbot. Please be aware that this is only a Proof of Concept system and may contain bugs or unfinished features.
 
-This chatbot uses documents from the *`Agentur für Arbeit`* as a data source.
-It's important to note that this is a personal project utilizing publicly available documents and is **NOT** an official product of the Agentur für Arbeit.
+This chatbot uses documents from the *Agentur für Arbeit* as a data source.
+It's important to note that this is a personal project utilizing publicly available documents and is <span style="color:#ad1714;">NOT</span> an official product of the *Agentur für Arbeit*.
 
 Please be aware that the information provided by the chatbot may not always be accurate.
 It is advisable to cross-verify any critical information from reliable sources before making any decisions based on the chatbot's response.
