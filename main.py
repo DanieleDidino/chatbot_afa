@@ -13,14 +13,14 @@ import pickle
 ####################################################################################
 # General Setup 
 
-# TODO: For now I use my key, then use the user key 
-env = environ.Env()
-environ.Env.read_env()
-API_KEY = env("OPENAI_API_KEY")
-openai.api_key = API_KEY
+# For importing a OpenAI key from a file, uncomment these line:
+env = environ.Env()             # uncomment if key imported from file
+environ.Env.read_env()          # uncomment if key imported from file
+API_KEY = env("OPENAI_API_KEY") # uncomment if key imported from file
+openai.api_key = API_KEY        # uncomment if key imported from file
 
 # Set LLm
-selected_llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo")
+#selected_llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo", openai_api_key="")
 
 # Define prompt
 qa_template = create_prompt_template()
@@ -60,7 +60,7 @@ st.set_page_config(
     }
 )
 
-st.header("Chat column")
+st.header("Please enter your OpenAI Key")
 
 # Condense the layout
 padding = 0
@@ -97,7 +97,7 @@ with sidebar:
     # Get OpenAI ley from user
     openai_label = "Enter your [OpenAi key](https://platform.openai.com/account/api-keys)"
     OPENAI_KEY = st.text_input(label=openai_label, type="password", help="Enter your OpenAi key")
-    # openai.api_key = OPENAI_KEY # TODO: Uncomment this lines when we will ask for the user OpenAI Key
+    # openai.api_key = OPENAI_KEY # comment if key imported from file
 
     # Add space between elements of the column
     st.markdown("<br>", unsafe_allow_html=True)
