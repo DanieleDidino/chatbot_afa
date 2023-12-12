@@ -3,37 +3,10 @@ from engines_responses import default_engine, response_from_query_engine
 from prompts import create_prompt_template
 
 import streamlit as st
-from langchain.chat_models import ChatOpenAI
-import environ
+# import environ
 import openai
 from pathlib import Path
 import pickle 
-
-
-####################################################################################
-# General Setup 
-
-# For importing a OpenAI key from a file, uncomment these line:
-env = environ.Env()             # uncomment if key imported from file
-environ.Env.read_env()          # uncomment if key imported from file
-API_KEY = env("OPENAI_API_KEY") # uncomment if key imported from file
-openai.api_key = API_KEY        # uncomment if key imported from file
-
-# Set LLm
-#selected_llm=ChatOpenAI(temperature=0, model_name="gpt-3.5-turbo", openai_api_key="")
-
-# Define prompt
-qa_template = create_prompt_template()
-
-number_top_results = 5 # Number of top results to return
-folder_with_index = "vector_db" # load vector store from here
-
-# Load default query engine
-query_engine = default_engine(folder_with_index, qa_template, number_top_results)
-
-# Load dictionary with the title of the pdf files.
-with open(Path("pdf_titles", "pdf_dictionary.pkl"), 'rb') as f:
-    pdf_dict = pickle.load(f)
 
 
 ####################################################################################
@@ -88,7 +61,7 @@ sidebar = st.sidebar
 with sidebar:
 
     # Custom page title and subtitle
-    st.title("Chat with AfA documents")
+    st.title("Bureau Bot")
     st.subheader("(Unofficial) Chatbot based on Agentur für Arbeit documents", divider="orange")
     st.markdown("<br>", unsafe_allow_html=True)
     # st.markdown("<br>", unsafe_allow_html=True)
@@ -97,7 +70,6 @@ with sidebar:
     # Get OpenAI ley from user
     openai_label = "Enter your [OpenAi key](https://platform.openai.com/account/api-keys)"
     OPENAI_KEY = st.text_input(label=openai_label, type="password", help="Enter your OpenAi key")
-    # openai.api_key = OPENAI_KEY # comment if key imported from file
 
     # Add space between elements of the column
     st.markdown("<br>", unsafe_allow_html=True)
@@ -109,6 +81,31 @@ with sidebar:
     # Initialize chat history
     if "messages" not in st.session_state:
         st.session_state.messages = []
+
+
+####################################################################################
+# General Setup 
+
+if OPENAI_KEY:
+    # For importing a OpenAI key from a file, uncomment these line:
+    # env = environ.Env()             # uncomment if key imported from file
+    # environ.Env.read_env()          # uncomment if key imported from file
+    # API_KEY = env("OPENAI_API_KEY") # uncomment if key imported from file
+    # openai.api_key = API_KEY        # uncomment if key imported from file
+    openai.api_key = OPENAI_KEY # comment if key imported from file
+
+    # Define prompt
+    qa_template = create_prompt_template()
+
+    number_top_results = 5 # Number of top results to return
+    folder_with_index = "vector_db" # load vector store from here
+
+    # Load default query engine
+    query_engine = default_engine(folder_with_index, qa_template, number_top_results)
+
+# Load dictionary with the title of the pdf files.
+with open(Path("pdf_titles", "pdf_dictionary.pkl"), 'rb') as f:
+    pdf_dict = pickle.load(f)
 
 
 ####################################################################################
@@ -126,7 +123,10 @@ if prompt := st.chat_input("How may I help you?"):
     # Add user message to chat history
     st.session_state.messages.append({"role": "user", "content": prompt})
 
-    response_for_user = response_from_query_engine(query_engine, prompt, pdf_dict)
+    if OPENAI_KEY:
+        response_for_user = response_from_query_engine(query_engine, prompt, pdf_dict)
+    else:
+        response_for_user = "Please add your OpenAI key to continue."
 
     # Display assistant response in chat message container
     with st.chat_message("assistant"):
