@@ -13,7 +13,7 @@ This chatbot uses documents from the *Agentur für Arbeit* as its data source. I
 Please be aware that this is a personal project that uses publicly available documents and is <span style="color:#ad1714;">NOT</span> an official product of the *Agentur für Arbeit*. Be advised that the information provided by the chatbot may not always be accurate. It's recommended to cross-check any critical information with reliable sources before making decisions based on the chatbot's responses.
 
 <p align="center">
-<img src="img/chatbot_screenshot.png" alt="drawing" width="800"/>
+<img src="img/chatbot_screenshot.png" alt="drawing" width="400"/>
 <br>Chatbot Screenshot
 </p>
 
@@ -36,7 +36,7 @@ The system retrieves the top-k (here 5) relevant items from the vector database.
 In the final step, the context obtained from the retrieved documents is combined with the original user query. This combined input (prompt) is then fed into an LLM (here, “**gpt-3.5-turbo**”) for response generation. This process enables the LLM to produce responses that are contextually relevant, leveraging both the query and the retrieved document information. Additionally, the chatbot provides the source details (i.e., the title and page) of the top-k retrieved items, along with their respective cosine similarity scores.
 
 <p align="center">
-<img src="img/RAG_pipeline.png" alt="drawing" width="700"/>
+<img src="img/RAG_pipeline.png" alt="drawing" width="300"/>
 <br>RAG pipeline
 </p>
 
