@@ -1,9 +1,14 @@
-from utils import get_filename_from_title
-from engines_responses import default_engine, response_from_query_engine
-from prompts import create_prompt_template
+from utils import (
+    param_dict,
+    create_prompt_template,
+    get_filename_from_title,
+    build_index_from_file,
+    build_query_engine,
+    build_query_engine_hyde,
+    response_from_query_engine)
 
 import streamlit as st
-# import environ
+# import environ # uncomment if key imported from file
 import openai
 from pathlib import Path
 import pickle 
@@ -33,7 +38,7 @@ st.set_page_config(
     }
 )
 
-st.header("Please enter your OpenAI Key")
+# st.header("ChatGPT with AfA documents")
 
 # Condense the layout
 padding = 0
@@ -61,7 +66,7 @@ sidebar = st.sidebar
 with sidebar:
 
     # Custom page title and subtitle
-    st.title("Bureau Bot")
+    st.title("Chat with the AfA Documents")
     st.subheader("(Unofficial) Chatbot based on Agentur für Arbeit documents", divider="orange")
     st.markdown("<br>", unsafe_allow_html=True)
     # st.markdown("<br>", unsafe_allow_html=True)
@@ -95,13 +100,15 @@ if OPENAI_KEY:
     openai.api_key = OPENAI_KEY # comment if key imported from file
 
     # Define prompt
-    qa_template = create_prompt_template()
+    prompt_template = create_prompt_template()
 
-    number_top_results = 5 # Number of top results to return
-    folder_with_index = "vector_db" # load vector store from here
+    # Folder with the vector store
+    folder_with_index = "vector_db"
 
-    # Load default query engine
-    query_engine = default_engine(folder_with_index, qa_template, number_top_results)
+    # Build index (from file), query engine, and query  engine with HyDE
+    index = build_index_from_file(folder_with_index)
+    query_engine = build_query_engine(index, prompt_template, param_dict)
+    query_engine_hyde = build_query_engine_hyde(query_engine)
 
 # Load dictionary with the title of the pdf files.
 with open(Path("pdf_titles", "pdf_dictionary.pkl"), 'rb') as f:
