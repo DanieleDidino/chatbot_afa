@@ -86,7 +86,10 @@ You will need an <b>OpenAI API key</b> (you can create one [here](https://platfo
 
 ## Build vector database
 
-To build a vector database from the documents in the folder "*documents_pdf*", run in the terminal:
+To build a vector database from the documents in the folder "*documents_pdf*", you will need to add your <b>OpenAI API key</b> in the file `.env`.
+This will overwrite the previous vector database and the new vector database is saved in the folder "*vector_db*".
+
+Run in the terminal:
 
 1. Activate the virtual environment:
    ```bash
@@ -102,7 +105,3 @@ To build a vector database from the documents in the folder "*documents_pdf*", r
     ```bash
     deactivate
     ```
-
-You will need to add your <b>OpenAI API key</b> in the file `.env`.
-This will overwrite the previous vector database. The vector database is saved in the folder "*vector_db*".
-
