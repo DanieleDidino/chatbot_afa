@@ -78,7 +78,7 @@ You will need an <b>OpenAI API key</b> (you can create one [here](https://platfo
     streamlit run main.py
     ```
 
-3. Deactivate the virtual environment:
+6. Deactivate the virtual environment:
     ```bash
     deactivate
     ```
@@ -88,9 +88,20 @@ You will need an <b>OpenAI API key</b> (you can create one [here](https://platfo
 
 To build a vector database from the documents in the folder "*documents_pdf*", run in the terminal:
 
-```bash
-python3 build_vector_db.py
-```
+1. Activate the virtual environment:
+   ```bash
+   source .venv/bin/activate
+   ```
+
+2. Build vector database:
+   ```bash
+   python3 build_vector_db.py
+   ```
+
+3. Deactivate the virtual environment:
+    ```bash
+    deactivate
+    ```
 
 You will need to add your <b>OpenAI API key</b> in the file `.env`.
 This will overwrite the previous vector database. The vector database is saved in the folder "*vector_db*".

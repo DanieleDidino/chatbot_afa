@@ -5,7 +5,7 @@ from llama_index.query_engine.transform_query_engine import TransformQueryEngine
 import streamlit as st
 
 param_dict = {
-    "chunk_size": 256, # [256, 512, 1024]
+    "chunk_size": 512, # [256, 512, 1024]
     "top_k_results": 5 # [1, 3, 5]
 }
 
