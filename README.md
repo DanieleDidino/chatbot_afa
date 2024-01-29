@@ -2,7 +2,7 @@
 Chat with the documents from the <i>Agentur für Arbeit</i>
 <br>
 <br>
-<img src="img/image_app.png" alt="drawing" width="400"/>
+<img src="img/image_app.png" alt="drawing" width="300"/>
 </h1>
 
 
