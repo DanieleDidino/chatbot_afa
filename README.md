@@ -40,11 +40,15 @@ In the final step, the context obtained from the retrieved documents is combined
 <br>RAG pipeline
 </p>
 
-## Streamlit
+## Demo App
 
-You can interact with the Streamlit app [here](https://....). 
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([https://...](https://chatbotafa-dgzurhjau4dm3ofd9ezzmk.streamlit.app/))
 
 You will need an <b>OpenAI API key</b> (you can create one [here](https://platform.openai.com/account/api-keys)).
+
+## Colab notebook
+
+[![Colab Notebook](https://colab.research.google.com/assets/colab-badge.svg)](https://github.com/DanieleDidino/chatbot_afa/blob/master/experiments_RAG.ipynb)
 
 
 ## Installation
