@@ -42,7 +42,7 @@ In the final step, the context obtained from the retrieved documents is combined
 
 ## Demo App
 
-[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)]([https://...](https://chatbotafa-dgzurhjau4dm3ofd9ezzmk.streamlit.app/))
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://chatbotafa-dgzurhjau4dm3ofd9ezzmk.streamlit.app/)
 
 You will need an <b>OpenAI API key</b> (you can create one [here](https://platform.openai.com/account/api-keys)).
 
