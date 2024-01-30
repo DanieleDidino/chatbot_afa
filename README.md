@@ -60,7 +60,11 @@ You will need an <b>OpenAI API key</b> (you can create one [here](https://platfo
     git clone https://github.com/DanieleDidino/chatbot_afa.git
     ```
 
-2. Create a virtual environment:
+2. Change working directory and create a virtual environment:
+    ```bash
+    cd chatbot_afa/
+    ```
+    
     ```bash
     python3 -m venv .venv
     ```
