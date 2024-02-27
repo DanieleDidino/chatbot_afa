@@ -113,3 +113,7 @@ Run in the terminal:
     ```bash
     deactivate
     ```
+
+## Credits
+
+This repo represents an updated iteration of [Bureau Bot](https://github.com/DanieleDidino/bureaubot/tree/master), initially developed by **Daniele Didino** and **Marco Zausch** as a portfolio project for the Data Science Retreat (Berlin), and mentored by **Antonio Rueda-Toicen**.
